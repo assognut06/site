@@ -1,1 +1,1 @@
-# gnut06
+# gnut06.org
