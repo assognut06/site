@@ -27,6 +27,10 @@
                     Montant : <?= formattedPrice($data_payment->amount) ?><br>
                     Mode de paiement : <?= $data_payment->paymentMeans ?><br>
                     <a href="<?= $data_payment->paymentReceiptUrl ?>" target="_blank">Reçu de paiement</a>
+                    <?php if(isset($data_payment->fiscalReceiptUrl)) {
+                        echo '<br><a href="'. $data_payment->fiscalReceiptUrl .'" target="_blank">Reçu de fiscal</a>';
+                    }
+                    ?>
 
                 </p>
             </div>
