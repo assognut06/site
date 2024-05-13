@@ -13,7 +13,6 @@ $nextPage = min($totalPages, $pageIndex + 1);
 ?>
 <div class="pt-0">
     <div class="mx-3">
-        <?php require_once 'views/includes/adminBarre.php'; ?>
         <h2 class="my-5 text-success text-center"><?= isset($_GET['formSlug']) ? $data_forms->data[0]->order->formName : "Les billets de Gnut 06" ?></h2>
         <div class="border border-success mb-5 mx-5"></div>
         <div class="row align-items-start mx-auto">
@@ -58,7 +57,7 @@ $nextPage = min($totalPages, $pageIndex + 1);
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <iframe src="views/includes/orders/order.php?order=<?= htmlspecialchars($item->id) ?>" frameborder="0" width="100%" height="700px"></iframe>
+                                                                <iframe src="views/admin/includes/orders/order.php?order=<?= htmlspecialchars($item->id) ?>" frameborder="0" width="100%" height="700px"></iframe>
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
@@ -71,7 +70,7 @@ $nextPage = min($totalPages, $pageIndex + 1);
                                         <td><?= htmlspecialchars($item->payer->firstName) ?></td>
                                         <td><?= htmlspecialchars($item->payer->email) ?></td>
                                         <?= isset($item->customFields[0]->answer) ? '<td>' .htmlspecialchars($item->customFields[0]->answer).'</td>' : '<td>Aucun</td>' ?>
-                                        <td><a href="?page=<?= $_GET['page'] ?>&formType=<?= $item->order->formType ?>&formSlug=<?= $item->order->formSlug ?>"><i class="bi bi-browser-edge"></i></a></td>
+                                        <td><a href="?page=<?= $_GET['page'] ?>&item=<?= $_GET['item'] ?>&formType=<?= $item->order->formType ?>&formSlug=<?= $item->order->formSlug ?>"><i class="bi bi-browser-edge"></i></a></td>
                                         <td><?= htmlspecialchars($item->order->formType) ?></td>
                                         <td><?php date_fr_j_h($item->order->date) ?></td>
                                         <td><?= isset($item->payments[0]->id) ? '<a href="?page=payments&payment=' . $item->payments[0]->id . '">' . $item->payments[0]->id . '</a>' : "Gratuit" ?></td>
@@ -97,14 +96,14 @@ $nextPage = min($totalPages, $pageIndex + 1);
                 <nav aria-label="Page navigation">
                     <ul class="pagination">
                         <li class="page-item <?php echo $prevPage == $pageIndex ? 'disabled' : ''; ?>">
-                            <a class="page-link" href="?page=<?= $_GET['page'] ?>&pageIndex=<?php echo $prevPage; ?>" aria-label="Previous">
+                            <a class="page-link" href="?page=<?= $_GET['page'] ?>&item=<?= $_GET['item'] ?>&pageIndex=<?php echo $prevPage; ?>" aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
                         </li>
 
                         <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
                             <li class="page-item <?php echo $i == $pageIndex ? 'active' : ''; ?>">
-                                <a class="page-link" href="?page=<?= $_GET['page'] ?>&pageIndex=<?php echo $i; ?>"><?php echo $i; ?></a>
+                                <a class="page-link" href="?page=<?= $_GET['page'] ?>&item=<?= $_GET['item'] ?>&pageIndex=<?php echo $i; ?>"><?php echo $i; ?></a>
                             </li>
                         <?php endfor; ?>
 
