@@ -1,7 +1,6 @@
 <!--Contenu Actualités-->
 <div class="pt-0">
     <div class="mx-3">
-        <?php require_once 'views/includes/adminBarre.php'; ?>
         <h2 class="my-5 text-success text-center">Les paiements de Gnut 06</h2>
         <div class="border border-success mb-5 mx-5"></div>
         <div class="row align-items-start mx-auto">
@@ -27,7 +26,33 @@
                             foreach ($data_forms->data as $item) {
                                 if ($item->status == "Authorized") { ?>
                                     <tr>
-                                        <th scope="row"><a href="?page=<?= $_GET['page'] ?>&payment=<?= htmlspecialchars($item->id) ?>"><?= htmlspecialchars($item->id) ?></th>
+                                        <th scope="row">
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#Modal_payment_<?= htmlspecialchars($item->id) ?>">
+                                                <?= htmlspecialchars($item->id) ?>
+                                            </button>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade  modal-xl" id="Modal_payment_<?= htmlspecialchars($item->id) ?>" tabindex="-1" aria-labelledby="Modal_payment_<?= htmlspecialchars($item->id) ?>Label" aria-hidden="true">
+                                                <div class="modal-dialog ">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="Modal_payment_<?= htmlspecialchars($item->id) ?>Label">Détails du paiement numéro : <?= htmlspecialchars($item->id) ?></h1>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <?php
+                                                            $_GET['payment'] = htmlspecialchars($item->id);
+                                                            include "includes/payments.php";
+                                                            include 'views/admin/includes/payments/payment.php' ?>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </th>
                                         <td><?= htmlspecialchars($item->payerLastName) ?></td>
                                         <td><?= htmlspecialchars($item->payerFirstName) ?></td>
                                         <td><?= htmlspecialchars($item->userEmail) ?></td>

@@ -6,6 +6,9 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     if (isset($_GET['item']) && $_GET['item'] === 'orders') {
         include_once 'views/admin/includes/orders/orders.php';
     }
+    if (isset($_GET['item']) && $_GET['item'] === 'payments') {     
+        include_once 'views/admin/includes/payments/payments.php';
+    }
     echo "<p class='text-center'>Bienvenue sur la page admin !</p>";
     $contenu = ob_get_clean();
     require_once 'views/admin/gabarit.php';
@@ -29,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username'], $_POST['pa
 <?php ob_start() ?>
 <!--Contenu-->
 <div class="container text-center">
-    <h2>Login Admin</h2>
+    <h2 class="text-success">Login Admin</h2>
     <?php if (!empty($error)) : ?>
         <p style="color: red;"><?php echo $error; ?></p>
     <?php endif; ?>

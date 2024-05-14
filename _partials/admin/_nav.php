@@ -6,6 +6,9 @@
     </button>
     <div class="collapse navbar-collapse fs-5" id="navbarNavDropdown">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+          <a class="nav-link <?= (empty($_GET['page']) || ($_GET['page'] == "admin")) ? "active" : "" ?>" aria-current="page" href="?page=admin">Accueil</a>
+        </li>
         <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) { ?>
           <li class="nav-item">
             <a class="nav-link" href="?page=deconnecter">Déconnexion</a>

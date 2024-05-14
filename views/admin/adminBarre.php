@@ -4,7 +4,7 @@
             <a class="nav-link<?= (isset($_GET['item']) && $_GET['item'] === 'orders') ? ' active' : '' ?>" aria-current="item" href="?page=admin&item=orders">Billets</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link<?= (isset($_GET['page']) && $_GET['page'] === 'payments') ? ' active' : '' ?>" href="?page=payments">Paiements</a>
+            <a class="nav-link<?= (isset($_GET['page']) && $_GET['page'] === 'payments') ? ' active' : '' ?>" href="?page=admin&item=payments">Paiements</a>
         </li>
         <!-- <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>

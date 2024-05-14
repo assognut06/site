@@ -1,3 +1,27 @@
+<?php
+require_once(__DIR__ . '/../../../../includes/functions.php');
+require_once(__DIR__ . '/../../../../config/constants.php');
+require_once __DIR__ . '/../../../../includes/tokenHelloasso.php';
+require_once __DIR__ . '/../../../../includes/orders.php';
+?>
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril Fatface">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Association Gnut 06 est une association régie par la loi 1901 domiciliée à Nice, dédiée à l'inclusion des personnes en situation de handicap grâce aux technologies innovantes. Nous utilisons la réalité virtuelle, la réalité augmentée et la réalité mixte pour offrir des expériences concrètes et enrichissantes aux personnes en situation de handicap, favorisant ainsi leur intégration sociale et leur épanouissement. Rejoignez-nous pour construire une société inclusive !">
+    <meta name="keywords" content="association, Gnut 06, inclusion, handicap, réalité virtuelle, réalité augmentée, réalité mixte, technologies innovantes, visite hôpital, stages, société inclusive">
+    <meta name="author" content="Association Gnut 06">
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Association Gnut 06 - Des Mondes Virtuels, des Liens Réels : L'Inclusion à Portée de Main</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+
+<body>
     <div class="container pt-0">
         <div class="mx-3">
             <h2 class="my-5 text-success text-center">Détails du billet numéro : <?= $_GET['order'] ?></h2>
@@ -52,7 +76,21 @@
             <?php }
                             }
                         } else {
-                            echo "<p>Aucun billet</p>";
+                            echo "<p>Aucun paiement</p>";
                         } ?>
+            <!-- <div class="col-12 text-center mt-5">
+            <?php
+            // Vérifier si l'en-tête 'Referer' est présent
+            if (!empty($_SERVER['HTTP_REFERER'])) {
+                // Créer un lien de retour basé sur l'URL précédemment visitée
+                echo '<a class="btn btn-success" href="' . htmlspecialchars($_SERVER['HTTP_REFERER'], ENT_QUOTES, 'UTF-8') . '">Retour</a>';
+            } else {
+                // Alternative si l'en-tête 'Referer' n'est pas disponible
+                echo '<p>Impossible de retourner à la page précédente.</p>';
+            }
+            ?>
+        </div> -->
+            </div>
         </div>
     </div>
+</body>
