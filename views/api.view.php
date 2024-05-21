@@ -421,7 +421,7 @@ if (isset($_GET['slug']) && isset($_GET['formType'])) { ?>
 <!-- <?php
 
         $url = "https://api.helloasso.com/v5/organizations/{$organizationSlug}";
-        $authorization = "Bearer " . $bearer_token;
+        $authorization = "Bearer " . $_SESSION['bearer_token'];
 
         $curl = curl_init();
 
@@ -460,7 +460,7 @@ if (isset($_GET['slug']) && isset($_GET['formType'])) { ?>
 
         // Paramètres de la requête
         $paramsForms = array(
-            'Authorization' => 'Bearer ' . $bearer_token,
+            'Authorization' => 'Bearer ' . $_SESSION['bearer_token'],
         );
 
         // Initialisation de la requête
@@ -492,7 +492,7 @@ if (isset($_GET['slug']) && isset($_GET['formType'])) { ?>
 <!-- <?php
 
         $url = "https://api.helloasso.com/v5/organizations/gnut-06/forms";
-        $authorization = "Bearer " . $bearer_token;
+        $authorization = "Bearer " . $_SESSION['bearer_token'];
 
         $curl = curl_init();
 
@@ -552,7 +552,7 @@ if (isset($_GET['slug']) && isset($_GET['formType'])) { ?>
 <!-- <?php
         // Paramètres de la requête
         $paramsForms = array(
-            'Authorization' => 'Bearer ' . $bearer_token,
+            'Authorization' => 'Bearer ' . $_SESSION['bearer_token'],
         );
         $curl = curl_init();
         // curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);

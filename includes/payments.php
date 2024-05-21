@@ -1,7 +1,7 @@
 <?php
 if (isset($_GET['payment'])) {
     $url = "https://api.helloasso.com/v5/payments/{$_GET['payment']}/";
-    $authorization = "Bearer " . $bearer_token;
+    $authorization = "Bearer " . $_SESSION['bearer_token'];
     $data_payment = curlApiGet($url, $authorization);
     // $curl = curl_init();
 
@@ -35,7 +35,7 @@ if (isset($_GET['payment'])) {
         $url = "https://api.helloasso.com/v5/organizations/{$organizationSlug}/payments/search?pageSize=50&formType={$_GET['formType']}&sortOrder=Desc&sortField=Date";
     }
     
-    $authorization = "Bearer " . $bearer_token;
+    $authorization = "Bearer " . $_SESSION['bearer_token'];
     $data_forms = curlApiGet($url, $authorization);
 
 }

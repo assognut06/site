@@ -1,7 +1,7 @@
 <?php
 if (isset($_GET['slug']) && isset($_GET['formType'])) {
     $url = "https://api.helloasso.com/v5/organizations/{$organizationSlug}/forms/{$_GET['formType']}/{$_GET['slug']}/public";
-    $authorization = "Bearer " . $bearer_token;
+    $authorization = "Bearer " . $_SESSION['bearer_token'];
 
     $curl = curl_init();
 
@@ -30,7 +30,7 @@ if (isset($_GET['slug']) && isset($_GET['formType'])) {
     }
 } else {
     $url = "https://api.helloasso.com/v5/organizations/{$organizationSlug}/forms";
-    $authorization = "Bearer " . $bearer_token;
+    $authorization = "Bearer " . $_SESSION['bearer_token'];
 
     $curl = curl_init();
 

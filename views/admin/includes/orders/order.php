@@ -9,8 +9,20 @@
                             if (isset($data_forms->payer->company)) { ?>
                                 Socété : <?= htmlspecialchars($data_forms->payer->company) ?><br>
                             <?php } ?>
-                            Nom : <?= htmlspecialchars($data_forms->payer->lastName) ?><br>
-                            Prénom : <?= $data_forms->payer->firstName ?><br>
+                            Nom : <?php
+                                    echo htmlspecialchars(
+                                        isset($data_forms->user->lastName) && !empty($data_forms->user->lastName)
+                                            ? $data_forms->user->lastName
+                                            : (isset($data_forms->payer->lastName) ? $data_forms->payer->lastName : '')
+                                    );
+                                    ?><br>
+                            Prénom : <?php
+                                        echo htmlspecialchars(
+                                            isset($data_forms->user->firstName) && !empty($data_forms->user->firstName)
+                                                ? $data_forms->user->firstName
+                                                : (isset($data_forms->payer->firstName) ? $data_forms->payer->firstName : '')
+                                        );
+                                        ?><br>
                             Email : <?= $data_forms->payer->email ?><br>
                             <?php if (isset($data_forms->payer->address)) { ?>
                                 Adresse : <?= htmlspecialchars($data_forms->payer->address) ?><br>
@@ -21,19 +33,19 @@
                 </div>
                 <div class="col">
                     <p>
-                        <h5><?= $data_forms->order->formName ?></h5>
-                        <div class="border border-success mb-5"></div>
-                        <p><?= isset($data_forms->tierDescription) ? nl2br(htmlspecialchars($data_forms->tierDescription )) : '' ?></p>
-                        <?= isset($data_forms->payments[0]->id) ? '<br>Référence payment : ' . $data_forms->payments[0]->id : '' ?><br>
-                        Date : <?= date_en_francais($data_forms->order->date) ?>
-                        <br>
-                        <div class="border border-success mb-5"></div>
-                        Type : <?= $data_forms->order->formType ?><br>
-                        <?= isset($data_forms->payments) ? 'Mode de paiement : '. $data_forms->payments[0]->paymentMeans .'</br>' : '' ?>
-                        Montant : <?= formattedPrice($data_forms->amount) ?><br>
-                        <?= isset($data_forms->ticketUrl) ? '<a class="btn btn-warning mt-3" href="'. $data_forms->ticketUrl .'" target="_blank">Ticket</a>' : '' ?>
-                        <?= isset($data_forms->membershipCardUrl) ? '<a class="btn btn-warning mt-3" href="'. $data_forms->membershipCardUrl .'" target="_blank">Carte d\'adhérant</a>' : '' ?>
-                    
+                    <h5><?= $data_forms->order->formName ?></h5>
+                    <div class="border border-success mb-5"></div>
+                    <p><?= isset($data_forms->tierDescription) ? nl2br(htmlspecialchars($data_forms->tierDescription)) : '' ?></p>
+                    <?= isset($data_forms->payments[0]->id) ? '<br>Référence payment : ' . $data_forms->payments[0]->id : '' ?><br>
+                    Date : <?= date_en_francais($data_forms->order->date) ?>
+                    <br>
+                    <div class="border border-success mb-5"></div>
+                    Type : <?= $data_forms->order->formType ?><br>
+                    <?= isset($data_forms->payments) ? 'Mode de paiement : ' . $data_forms->payments[0]->paymentMeans . '</br>' : '' ?>
+                    Montant : <?= formattedPrice($data_forms->amount) ?><br>
+                    <?= isset($data_forms->ticketUrl) ? '<a class="btn btn-warning mt-3" href="' . $data_forms->ticketUrl . '" target="_blank">Ticket</a>' : '' ?>
+                    <?= isset($data_forms->membershipCardUrl) ? '<a class="btn btn-warning mt-3" href="' . $data_forms->membershipCardUrl . '" target="_blank">Carte d\'adhérant</a>' : '' ?>
+
                     </p>
                 </div>
                 <?php if (isset($data_forms->payer->company) && isset($data_forms->payer->address)) { ?>
@@ -54,5 +66,5 @@
                         } else {
                             echo "<p>Aucun billet</p>";
                         } ?>
+            </div>
         </div>
-    </div>
