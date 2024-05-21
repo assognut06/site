@@ -58,7 +58,34 @@
                                         <td><?= htmlspecialchars($item->userEmail) ?></td>
                                         <td><?= htmlspecialchars($item->formType) ?></td>
                                         <td><?php date_fr_j_h($item->orderDate) ?></td>
-                                        <td><?php echo $item->orderId ?></td>
+                                        <td>
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#Modal_<?= htmlspecialchars($item->orderId) ?>">
+                                                <?= htmlspecialchars($item->orderId) ?>
+                                            </button>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade  modal-xl" id="Modal_<?= htmlspecialchars($item->orderId) ?>" tabindex="-1" aria-labelledby="Modal_<?= htmlspecialchars($item->orderId) ?>Label" aria-hidden="true">
+                                                <div class="modal-dialog ">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="Modal_<?= htmlspecialchars($item->orderId) ?>Label">Détails du billet numéro : <?= htmlspecialchars($item->orderId) ?></h1>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <?php
+                                                            $_GET['order'] = htmlspecialchars($item->orderId);
+                                                            include "includes/orders.php";
+                                                            include 'views/admin/includes/orders/order.php' ?>
+                                                            <!-- <iframe src="views/admin/includes/orders/order.php?order=<?= htmlspecialchars($item->orderId) ?>" frameborder="0" width="100%" height="700px"></iframe> -->
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
                                         <td class="text-end"><?= formattedPrice($item->amount) ?></td>
                                     </tr>
                         <?php

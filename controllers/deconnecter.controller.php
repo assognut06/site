@@ -8,8 +8,9 @@ if (isset($_SESSION['loggedin'])) {
 
 // Pour vérifier si la suppression a été effective
 if (!isset($_SESSION['loggedin'])) {
-    echo "La session 'loggedin' a été détruite.";
+    ob_start();
     header("Location: ?page=admin");
+    exit;
 } else {
     echo "La session 'loggedin' est toujours présente.";
 }
