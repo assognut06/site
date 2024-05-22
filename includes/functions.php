@@ -121,3 +121,41 @@ function curlApiGet($url, $authorization)
 		return json_decode($response);
 	}
 }
+
+function fetchToken($urlToken, $params) {
+    $curl = curl_init();
+    require('sslVerifypeer.php'); // Dépend de votre configuration sslVerifypeer
+    
+    curl_setopt($curl, CURLOPT_URL, $urlToken);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($curl, CURLOPT_POST, true);
+    curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($params));
+
+    $responseToken = curl_exec($curl);
+    curl_close($curl);
+    
+    return json_decode($responseToken, true);
+}
+
+function updateTokens($data) {
+    if (isset($data['access_token'])) {
+        $_SESSION['bearer_token'] = $data['access_token'];
+        $now = new DateTime();
+        
+        $expirationDate = clone $now;
+        // Ajouter l'intervalle à la date actuelle
+        $expirationDate->add(new DateInterval('PT' . $data['expires_in'] . 'S'));
+        // Mise à jour de la session pour les tokens
+        $_SESSION['expiration_token'] = $expirationDate;
+        
+        $refreshTokenDate = clone $now;
+        $refreshTokenDate->add(new DateInterval('P1M'));
+        $_SESSION['expirationRefreshToken'] = $refreshTokenDate;
+        
+        if (isset($data['refresh_token'])) {
+            $_SESSION['refresh_token'] = $data['refresh_token'];
+        }
+    } else {
+        echo 'Erreur lors de la récupération du jeton Bearer JWT';
+    }
+}

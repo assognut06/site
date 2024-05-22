@@ -1,6 +1,7 @@
 <!--Contenu Orders-->
 <?php
-// Récupération des données de pagination
+if(isset($data_forms->pagination)){
+    // Récupération des données de pagination
 $pageSize = $data_forms->pagination->pageSize;
 $totalCount = $data_forms->pagination->totalCount;
 $pageIndex = $data_forms->pagination->pageIndex;
@@ -9,7 +10,8 @@ $continuationToken = $data_forms->pagination->continuationToken;
 
 // Calcul des liens précédent et suivant
 $prevPage = max(1, $pageIndex - 1);
-$nextPage = min($totalPages, $pageIndex + 1);
+$nextPage = min($totalPages, $pageIndex + 1);}
+
 ?>
 <div class="pt-0">
     <div class="mx-3">
@@ -88,6 +90,15 @@ $nextPage = min($totalPages, $pageIndex + 1);
                     echo '<p>Impossible de retourner à la page précédente.</p>';
                 }
                 ?>
+                <!-- <?php
+                echo '<br>'; 
+                var_dump($_SESSION['expiration_token']) ;
+                echo '<br>';
+                var_dump(new DateTime());
+                if(new DateTime() > $_SESSION['expiration_token']) {
+                    echo '<br>ok';
+                }
+                ?> -->
             </div>
         </div>
     </div>
