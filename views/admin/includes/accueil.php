@@ -24,7 +24,7 @@
             <div class="col-12 col-xxl-4 fs-4 text-center"><?= htmlspecialchars($data->zipCode) ?> <?= htmlspecialchars($data->city) ?></div>
             <div class="col-12 col-xxl-4 mb-4 fs-4 text-center">RNA : <?= htmlspecialchars($data->rnaNumber) ?></div>
             <div class="col-12 mb-4 text-center">
-                <button class="HaAuthorizeButton mx-auto" onclick="var left = (screen.width - 600) / 2; var top = (screen.height - 600) / 2; window.open('https://auth.helloasso.com/authorize?client_id=6bebba59efa144698eaac784f4de1fcf&redirect_uri=https://gnut06.org&code_challenge=YsY192w3qKcEm7Kd8KpLgC25nRAavhDSvPakJtoVRq8&code_challenge_method=S256&state=500','_blank','width=600,height=600,left='+left+',top='+top);">
+                <button class="HaAuthorizeButton mx-auto" onclick="var left = (screen.width - 600) / 2; var top = (screen.height - 600) / 2; window.open('https://auth.helloasso.com/authorize?client_id=6bebba59efa144698eaac784f4de1fcf&redirect_uri=https://gnut06.org/views/admin/helloassoAuth.php&code_challenge=YsY192w3qKcEm7Kd8KpLgC25nRAavhDSvPakJtoVRq8&code_challenge_method=S256&state=500','_blank','width=600,height=600,left='+left+',top='+top);">
                     <img src="https://api.helloasso.com/v5/DocAssets/logo-ha.svg" alt="" class="HaAuthorizeButtonLogo">
                     <span class="HaAuthorizeButtonTitle">Connecter à HelloAsso</span>
                 </button>
