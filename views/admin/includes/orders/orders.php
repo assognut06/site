@@ -1,16 +1,17 @@
 <!--Contenu Orders-->
 <?php
-if(isset($data_forms->pagination)){
+if (isset($data_forms->pagination)) {
     // Récupération des données de pagination
-$pageSize = $data_forms->pagination->pageSize;
-$totalCount = $data_forms->pagination->totalCount;
-$pageIndex = $data_forms->pagination->pageIndex;
-$totalPages = $data_forms->pagination->totalPages;
-$continuationToken = $data_forms->pagination->continuationToken;
+    $pageSize = $data_forms->pagination->pageSize;
+    $totalCount = $data_forms->pagination->totalCount;
+    $pageIndex = $data_forms->pagination->pageIndex;
+    $totalPages = $data_forms->pagination->totalPages;
+    $continuationToken = $data_forms->pagination->continuationToken;
 
-// Calcul des liens précédent et suivant
-$prevPage = max(1, $pageIndex - 1);
-$nextPage = min($totalPages, $pageIndex + 1);}
+    // Calcul des liens précédent et suivant
+    $prevPage = max(1, $pageIndex - 1);
+    $nextPage = min($totalPages, $pageIndex + 1);
+}
 
 ?>
 <div class="pt-0">
@@ -60,24 +61,25 @@ $nextPage = min($totalPages, $pageIndex + 1);}
                 <nav aria-label="Page navigation">
                     <ul class="pagination">
                         <li class="page-item <?php echo $prevPage == $pageIndex ? 'disabled' : ''; ?>">
-                            <a class="page-link" href="?page=<?= $_GET['page'] ?>&item=<?= $_GET['item'] ?>&pageIndex=<?php echo $prevPage; ?>" aria-label="Previous">
+                            <a class="page-link" href="?page=<?= $_GET['page'] ?>&item=<?= $_GET['item'] ?>&pageIndex=<?php echo $prevPage; ?><?= isset($_GET['formType']) ? "&formType=" . $_GET['formType'] : "" ?><?= isset($_GET['formSlug']) ? "&formSlug=" . $_GET['formSlug'] : "" ?>" aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
                         </li>
 
                         <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
                             <li class="page-item <?php echo $i == $pageIndex ? 'active' : ''; ?>">
-                                <a class="page-link" href="?page=<?= $_GET['page'] ?>&item=<?= $_GET['item'] ?>&pageIndex=<?php echo $i; ?>"><?php echo $i; ?></a>
+                                <a class="page-link" href="?page=<?= $_GET['page'] ?>&item=<?= $_GET['item'] ?>&pageIndex=<?php echo $i; ?><?= isset($_GET['formType']) ? "&formType=" . $_GET['formType'] : "" ?><?= isset($_GET['formSlug']) ? "&formSlug=" . $_GET['formSlug'] : "" ?><?= isset($_GET['tierTypes']) ? "&tierTypes=" . $_GET['tierTypes'] : "" ?>"><?php echo $i; ?></a>
                             </li>
                         <?php endfor; ?>
 
                         <li class="page-item <?php echo $nextPage == $pageIndex ? 'disabled' : ''; ?>">
-                            <a class="page-link" href=",page=<?= $_GET['page'] ?>&pageIndex=<?php echo $nextPage; ?>" aria-label="Next">
+                            <a class="page-link" href=",page=<?= $_GET['page'] ?>&pageIndex=<?php echo $nextPage; ?><?= isset($_GET['formType']) ? "&formType=" . $_GET['formType'] : "" ?><?= isset($_GET['formSlug']) ? "&formSlug=" . $_GET['formSlug'] : "" ?>" aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>
                             </a>
                         </li>
                     </ul>
                 </nav>
+                <!-- <?= isset($_GET['formType']) ? "&formType=" . $_GET['formType'] : "" ?><?= isset($_GET['formSlug']) ? "&formSlug=" . $_GET['formSlug'] : "" ?> -->
             </div>
             <div class="col-12 text-center mt-5">
                 <?php
@@ -91,14 +93,14 @@ $nextPage = min($totalPages, $pageIndex + 1);}
                 }
                 ?>
                 <!-- <?php
-                echo '<br>'; 
-                var_dump($_SESSION['expiration_token']) ;
-                echo '<br>';
-                var_dump(new DateTime());
-                if(new DateTime() > $_SESSION['expiration_token']) {
-                    echo '<br>ok';
-                }
-                ?> -->
+                        echo '<br>';
+                        var_dump($_SESSION['expiration_token']);
+                        echo '<br>';
+                        var_dump(new DateTime());
+                        if (new DateTime() > $_SESSION['expiration_token']) {
+                            echo '<br>ok';
+                        }
+                        ?> -->
             </div>
         </div>
     </div>

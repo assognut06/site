@@ -27,8 +27,8 @@
             </div>
         </div>
     </th>
-    <td><?= htmlspecialchars($item->payer->lastName) ?></td>
-    <td><?= htmlspecialchars($item->payer->firstName) ?></td>
+    <td><?= isset($item->user->lastName) ? htmlspecialchars($item->user->lastName) : htmlspecialchars($item->payer->lastName) ?></td>
+    <td><?= isset($item->user->firstName) ? htmlspecialchars($item->user->firstName) : htmlspecialchars($item->payer->firstName) ?></td>
     <td><?= htmlspecialchars($item->payer->email) ?></td>
     <?= isset($item->customFields[0]->answer) ? '<td>' . htmlspecialchars($item->customFields[0]->answer) . '</td>' : '<td>Aucun</td>' ?>
     <td><a href="?page=<?= $_GET['page'] ?>&item=<?= $_GET['item'] ?>&formType=<?= $item->order->formType ?>&formSlug=<?= $item->order->formSlug ?>"><i class="bi bi-browser-edge"></i></a></td>

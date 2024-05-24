@@ -6,8 +6,13 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     if (isset($_GET['item']) && $_GET['item'] === 'orders') {
         include_once 'views/admin/includes/orders/orders.php';
     }
-    if (isset($_GET['item']) && $_GET['item'] === 'payments') {     
+    if (isset($_GET['item']) && $_GET['item'] === 'payments') {
         include_once 'views/admin/includes/payments/payments.php';
+    }
+    if (!isset($_GET['item'])) {
+        $_GET['asso'] = "gnut-06";
+        include_once 'includes/infosAssociation.php';
+        include_once 'views/admin/includes/accueil.php';
     }
     echo "<p class='text-center'>Bienvenue sur la page admin !</p>";
     $contenu = ob_get_clean();
@@ -36,18 +41,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username'], $_POST['pa
     <?php if (!empty($error)) : ?>
         <p style="color: red;"><?php echo $error; ?></p>
     <?php endif; ?>
-    <form method="post">
-        <div class="mb-3">
-            <label for="adminUsername" class="form-label">Identifiant</label>
-            <input type="text" class="form-control" name="username" required id="adminUsername" aria-describedby="identifiantHelp">
-        </div>
-        <div class="mb-3">
-            <label for="adminInputPassword" class="form-label">Password</label>
-            <input type="password" class="form-control" name="password" required id="adminInputPassword">
-        </div>
+    <div class="row">
+        <div class="col-12 col-md-4"></div>
+        <div class="col-12 col-md-4">
+            <form method="post">
+                <div class="mb-3">
+                    <label for="adminUsername" class="form-label">Identifiant</label>
+                    <input type="text" class="form-control" name="username" required id="adminUsername" aria-describedby="identifiantHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="adminInputPassword" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" required id="adminInputPassword">
+                </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="col-12 col-md-4"></div>
+    </div>
+
 </div>
 <?php $contenu = ob_get_clean()  ?>
 <?php require_once 'views/admin/gabarit.php'; ?>
