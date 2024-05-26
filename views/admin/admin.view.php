@@ -14,10 +14,9 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
         include_once 'includes/infosAssociation.php';
         include_once 'views/admin/includes/accueil.php';
     }
-    echo "<p class='text-center'>Bienvenue sur la page admin !</p>";
+    // echo "<p class='text-center'>Bienvenue sur la page admin !</p>";
     $contenu = ob_get_clean();
     require_once 'views/admin/gabarit.php';
-    exit;
 }
 
 // Traitement des données du formulaire

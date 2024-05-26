@@ -18,7 +18,6 @@
                         $_GET['order'] = htmlspecialchars($item->id);
                         include "includes/orders.php";
                         include 'views/admin/includes/orders/order.php' ?>
-                        <!-- <iframe src="views/admin/includes/orders/order.php?order=<?= htmlspecialchars($item->id) ?>" frameborder="0" width="100%" height="700px"></iframe> -->
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
@@ -53,7 +52,6 @@
                             $_GET['payment'] = htmlspecialchars($item->payments[0]->id);
                             include "includes/payments.php";
                             include 'views/admin/includes/payments/payment.php' ?>
-                            <!-- <iframe src="views/admin/includes/payments/payment.php?payment=<?= htmlspecialchars($item->payments[0]->id) ?>" frameborder="0" width="100%" height="730px"></iframe> -->
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>

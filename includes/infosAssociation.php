@@ -1,9 +1,11 @@
 <?php
-
-$url = "https://api.helloasso.com/v5/organizations/" . SLUGASSO;
-$authorization = "Bearer " . $_SESSION['bearer_token'];
-
-// Convertir le JSON en objet
-$data = curlApiGet($url, $authorization);
-
-// $organizationSlug = $data_asso->organizationSlug;
+require_once 'HelloAssoConnector.php';
+if (isset($_SESSION['bearer_token'])) {
+    $connector = new HelloAssoConnector($_SESSION['bearer_token'], $organizationSlug);
+    $data = $connector->fetchData();
+    // Vous pouvez maintenant utiliser $data_forms pour traiter les données récupérées
+    // var_dump($data);
+    // die();
+} else {
+    die("Erreur: Jeton d'authentification manquant.");
+}

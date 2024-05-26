@@ -22,6 +22,8 @@
                         <?php
                         $i = 0;
                         $total_payment = 0;
+                        // var_dump($data_forms);
+                        // die;
                         if (isset($data_forms->data)) {
                             foreach ($data_forms->data as $item) {
                                 if ($item->status == "Authorized") { ?>

@@ -15,12 +15,12 @@ if (isset($data_forms->pagination)) {
 
 ?>
 <div class="pt-0">
-    <div class="mx-3">
+<div class="mx-3">
         <h2 class="my-5 text-success text-center"><?= isset($_GET['formSlug']) ? $data_forms->data[0]->order->formName : "Les billets de Gnut 06" ?></h2>
         <div class="border border-success mb-5 mx-5"></div>
         <div class="row align-items-start mx-auto">
             <div class="col-12">
-                <table class="table table-success table-striped">
+            <table class="table table-success table-striped">
                     <thead>
                         <tr>
                             <th scope="col">Réf order</th>
@@ -79,7 +79,6 @@ if (isset($data_forms->pagination)) {
                         </li>
                     </ul>
                 </nav>
-                <!-- <?= isset($_GET['formType']) ? "&formType=" . $_GET['formType'] : "" ?><?= isset($_GET['formSlug']) ? "&formSlug=" . $_GET['formSlug'] : "" ?> -->
             </div>
             <div class="col-12 text-center mt-5">
                 <?php
